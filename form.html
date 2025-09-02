@@ -54,76 +54,84 @@
     </nav>
   </header>
 
-  <section class="form-section">
-    <div class="container">
-      <div class="form-container">
-        <h1 style="color: white;">ENTER PATIENT DETAILS</h1>
-        <p class="intro-text">
-          Fill out the form below for the diagnosis of your skin disease.
-          Our AI will process your image and generate a predicted report for you.
-        </p>
+  <main>
+    <section class="form-section">
+      <div class="container">
+        <div class="form-container">
+          <h1 style="color: white;">ENTER PATIENT DETAILS</h1>
+          <p class="intro-text">
+            Fill out the form below for the diagnosis of your skin disease.
+            Our AI will process your image and generate a predicted report for you.
+          </p>
 
-        <div class="form-wrapper">
-          <form id="patient-form" action="/predict" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email address" required />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group half">
-                <label for="gender">Gender</label>
-                <select id="gender" name="gender" required>
-                  <option value="" disabled selected>Select gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
+          <div class="form-wrapper">
+            <form id="patient-form" action="/predict" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
               </div>
 
-              <div class="form-group half">
-                <label for="age">Age</label>
-                <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120" required />
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required />
               </div>
-            </div>
 
-            <div class="form-group file-upload-group">
-              <label for="image">Upload Image</label>
-              <div class="file-upload-wrapper">
-                <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png" required />
-                <span class="file-upload-text">Choose Image</span>
+              <div class="form-row">
+                <div class="form-group half">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group half">
+                  <label for="age">Age</label>
+                  <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="120" required />
+                </div>
               </div>
-              <small class="warning">Allowed: JPG, PNG | Max size: 20MB</small>
-              <div class="upload-message" id="upload-message" style="display: none;"></div>
-            </div>
 
-            <div class="form-group consent-group">
-              <input type="checkbox" id="consent" name="consent" required />
-              <label for="consent">I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label>
-            </div>
+              <div class="form-group file-upload-group">
+                <label for="image">Upload Image</label>
+                <div class="file-upload-wrapper">
+                  <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png" required />
+                  <span class="file-upload-text">Choose Image</span>
+                </div>
+                <small class="warning">Allowed: JPG, PNG | Max size: 20MB</small>
+                <div class="upload-message" id="upload-message" style="display: none;"></div>
+              </div>
 
-            <div class="form-actions">
-              <button type="submit" class="submit-button" id="submit-btn">Submit Details</button>
-            </div>
+              <div class="form-group consent-group">
+                <input type="checkbox" id="consent" name="consent" required />
+                <label for="consent">I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label>
+              </div>
 
-          <!-- Result Section -->
-          <div class="result-section" id="result-section" style="margin-top: 30px; {% if result %}display: block;{% else %}display: none;{% endif %}">
-            <h2>Diagnosis Result</h2>
-            <div id="result-content">
-              {% if result %}
-                <p><strong>Prediction:</strong> {{ result.prediction }}</p>
-                <p><strong>Confidence:</strong> {{ result.confidence }}</p>
-                {% if result.message %}
-                  <p class="warning-message">{{ result.message }}</p>
+              <div class="form-actions">
+                <button type="submit" class="submit-button" id="submit-btn">Submit Details</button>
+              </div>
+            </form> <!-- Form closed properly -->
+
+            <!-- Result Section -->
+            <div class="result-section" id="result-section" style="margin-top: 30px; {% if result %}display: block;{% else %}display: none;{% endif %}">
+              <h2>Diagnosis Result</h2>
+              <div id="result-content">
+                {% if result %}
+                  <p><strong>Prediction:</strong> {{ result.prediction }}</p>
+                  <p><strong>Confidence:</strong> {{ result.confidence }}</p>
+                  {% if result.message %}
+                    <p class="warning-message">{{ result.message }}</p>
+                  {% endif %}
                 {% endif %}
-              {% endif %}
+              </div>
             </div>
-          </div>
+
+          </div> <!-- .form-wrapper -->
+        </div> <!-- .form-container -->
+      </div> <!-- .container -->
+    </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -142,16 +150,9 @@
         </div>
       </div>
       <div class="copyright">
-        <p>© 2025 SnapSkin . All rights reserved.</p>
+        <p>© 2025 SnapSkin. All rights reserved.</p>
       </div>
     </div>
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
