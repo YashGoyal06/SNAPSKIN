@@ -111,23 +111,6 @@
               <button type="submit" class="submit-button" id="submit-btn">Submit Details</button>
             </div>
           </form>
-
-          <!-- Result Section -->
-          <div class="result-section" id="result-section" style="margin-top: 30px; {% if result %}display: block;{% else %}display: none;{% endif %}">
-            <h2>Diagnosis Result</h2>
-            <div id="result-content">
-              {% if result %}
-                <p><strong>Prediction:</strong> {{ result.prediction }}</p>
-                <p><strong>Confidence:</strong> {{ result.confidence }}</p>
-                {% if result.message %}
-                  <p class="warning-message">{{ result.message }}</p>
-                {% endif %}
-              {% endif %}
-            </div>
-          </div>
-
-  </section>
-
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -151,6 +134,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
